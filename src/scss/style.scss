@@ -1,0 +1,113 @@
+// Variables
+$font-primary: 'Merriweather', serif;
+$font-secondary: 'Lora', serif;
+$primary-color: #000;
+$secondary-color: #f0f8ff;
+$accent-color: #333;
+$spacing: 20px;
+
+// Mixins
+@mixin flex-center($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin text-style($size, $weight: normal) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+body {
+  font-family: $font-secondary;
+  color: $primary-color;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  @include flex-center(space-between);
+  padding: $spacing;
+  border-bottom: 1px solid #ddd;
+
+  nav {
+    ul {
+      list-style: none;
+      @include flex-center(space-between);
+      gap: $spacing;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          text-decoration: none;
+          color: $primary-color;
+          font-weight: bold;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  font-family: $font-primary;
+  @include text-style(24px, bold);
+}
+
+.hero {
+  @include flex-center(space-between);
+  padding: $spacing * 2;
+
+  img {
+    width: 50%;
+    border-radius: 10px;
+  }
+
+  .hero-text {
+    width: 45%;
+
+    h1 {
+      @include text-style(28px, bold);
+    }
+
+    p {
+      color: $accent-color;
+    }
+  }
+}
+
+footer {
+  background: $secondary-color;
+  text-align: center;
+  padding: $spacing;
+  margin-top: 50px;
+
+  .logo {
+    @include text-style(20px, bold);
+    margin-bottom: 10px;
+  }
+
+  .social-links {
+    @include flex-center;
+    gap: 15px;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      color: $primary-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  p {
+    @include text-style(12px);
+    color: $accent-color;
+  }
+}
